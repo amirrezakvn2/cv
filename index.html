@@ -34,7 +34,16 @@
 
     .grid { display: grid; gap: 48px; }
     @media (min-width: 860px) { .grid { grid-template-columns: 260px 1fr; gap: 64px; } }
-    @media (max-width: 859px) { main { order: -1; } }
+    /* Phone: one column, every section at the same level, in reading order */
+    @media (max-width: 859px) {
+      .grid { display: flex; flex-direction: column; gap: 0; }
+      aside, main { display: contents; }
+      .grid section { margin-top: 44px !important; }
+      .grid section:first-child { margin-top: 0; }
+      .s-profile { order: 1; margin-top: 0 !important; } .s-languages { order: 2; } .s-education { order: 3; } .s-experience { order: 4; }
+      .s-projects { order: 5; } .s-software { order: 6; } .s-interests { order: 7; } .s-courses { order: 8; }
+      aside h2 { font-size: 22px; letter-spacing: -.01em; text-transform: none; color: var(--text); border-top: 2px solid var(--text); padding-top: 14px; margin-bottom: 22px; }
+    }
     @media (max-width: 560px) { header { flex-direction: column; align-items: flex-start; } }
 
     h2 { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
@@ -100,12 +109,12 @@
 
     <div class="grid">
       <aside>
-        <section class="fade">
+        <section class="fade s-profile">
           <h2>Profile</h2>
           <p>Master’s student in Energy Engineering with a background in mechanical engineering. I enjoy solving technical problems through simulation, modelling and data, and I work hard towards the goals of the team, in academic and professional settings alike.</p>
         </section>
 
-        <section class="fade">
+        <section class="fade s-languages">
           <h2>Languages</h2>
           <ul class="list">
             <li><span>Persian</span><span>Native</span></li>
@@ -115,21 +124,21 @@
           </ul>
         </section>
 
-        <section class="fade">
+        <section class="fade s-software">
           <h2>Software</h2>
           <div class="tags">
             <span>Abaqus</span><span>ANSYS Fluent</span><span>CATIA</span><span>SolidWorks</span><span>ADAMS</span><span>EES</span><span>MATLAB</span><span>Python</span><span>GAMS</span><span>Excel VBA</span>
           </div>
         </section>
 
-        <section class="fade">
+        <section class="fade s-interests">
           <h2>Interests</h2>
           <div class="tags">
             <span>Renewable energy</span><span>HVAC</span><span>Machine learning</span><span>Data processing</span><span>Digital twins</span><span>3D mechanical design</span>
           </div>
         </section>
 
-        <section class="fade">
+        <section class="fade s-courses">
           <h2>Courses</h2>
           <div class="course"><b>Python preliminary course</b><span>Ferdowsi University of Mashhad · Sep 2020</span></div>
           <div class="course"><b>MATLAB preliminary course</b><span>University of Tehran · Oct 2021</span></div>
@@ -139,7 +148,7 @@
       </aside>
 
       <main>
-        <section class="fade">
+        <section class="fade s-education">
           <h2>Education</h2>
           <div class="entry">
             <div class="entry-head"><h3>MSc Energy Engineering</h3><span class="date">Feb 2024 – Present</span></div>
@@ -151,7 +160,7 @@
           </div>
         </section>
 
-        <section class="fade">
+        <section class="fade s-experience">
           <h2>Experience</h2>
           <div class="entry">
             <div class="entry-head"><h3>Financial Administration Support</h3><span class="date">Jan 2026 – Mar 2026</span></div>
@@ -176,7 +185,7 @@
           </div>
         </section>
 
-        <section class="fade">
+        <section class="fade s-projects">
           <h2>Projects</h2>
           <div class="entry">
             <div class="entry-head"><h3>Crack Propagation Prediction: Abaqus XFEM Simulation, Laboratory Experiments and Machine Learning <span class="badge">MSc thesis</span></h3><span class="date">Sep 2026 – Present</span></div>

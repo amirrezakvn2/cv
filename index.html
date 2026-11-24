@@ -25,7 +25,8 @@
     a:hover { text-decoration: underline; }
     .wrap { max-width: 1040px; margin: 0 auto; padding: clamp(40px, 7vw, 88px) clamp(20px, 5vw, 48px) 64px; }
 
-    header { padding-bottom: 36px; border-bottom: 1px solid var(--line); margin-bottom: 44px; }
+    header { padding-bottom: 36px; border-bottom: 1px solid var(--line); margin-bottom: 44px; display: flex; align-items: center; gap: clamp(20px, 4vw, 36px); }
+    .avatar { width: clamp(88px, 14vw, 120px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid var(--line); }
     h1 { font-family: var(--display); font-weight: 600; font-size: clamp(36px, 6vw, 56px); line-height: 1; letter-spacing: -.03em; }
     .role { color: var(--muted); font-size: clamp(16px, 2vw, 19px); margin-top: 12px; }
     .contact { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 22px; font-size: 14.5px; }
@@ -33,9 +34,14 @@
 
     .grid { display: grid; gap: 48px; }
     @media (min-width: 860px) { .grid { grid-template-columns: 260px 1fr; gap: 64px; } }
+    @media (max-width: 859px) { main { order: -1; } }
+    @media (max-width: 560px) { header { flex-direction: column; align-items: flex-start; } }
 
     h2 { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
     section + section { margin-top: 40px; }
+    main section + section { margin-top: 64px; }
+    main h2 { font-size: 22px; letter-spacing: -.01em; text-transform: none; color: var(--text); border-top: 2px solid var(--text); padding-top: 14px; margin-bottom: 26px; display: flex; justify-content: space-between; align-items: baseline; }
+    main h2 small { font-family: var(--sans); font-weight: 500; font-size: 12px; letter-spacing: .12em; color: var(--muted); }
     aside p { color: var(--text); }
     .list { list-style: none; }
     .list li { padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; }
@@ -71,6 +77,8 @@
       .fade { opacity: 1 !important; transform: none !important; }
       .print-btn, footer { display: none; }
       .entry { break-inside: avoid; }
+      main section + section { margin-top: 28px; }
+      .avatar { width: 80px; }
       a { color: #000; }
     }
   </style>
@@ -78,11 +86,14 @@
 <body>
   <div class="wrap">
     <header class="fade">
+      <img class="avatar" src="photo.jpg" alt="Amir Reza Kayvan" width="120" height="120">
+      <div>
       <h1>Amir Reza Kayvan</h1>
       <p class="role">MSc Energy Engineering student · Politecnico di Milano</p>
       <div class="contact">
         <a href="mailto:amirreza.kayvan@mail.polimi.it">amirreza.kayvan@mail.polimi.it</a>
         <span>Milan, Italy</span>
+      </div>
       </div>
     </header>
 
@@ -128,7 +139,7 @@
 
       <main>
         <section class="fade">
-          <h2>Education</h2>
+          <h2>Education <small>01</small></h2>
           <div class="entry">
             <div class="entry-head"><h3>MSc Energy Engineering</h3><span class="date">Feb 2024 – Present</span></div>
             <p class="sub">Politecnico di Milano · Milan, Italy</p>
@@ -140,7 +151,7 @@
         </section>
 
         <section class="fade">
-          <h2>Experience</h2>
+          <h2>Experience <small>02</small></h2>
           <div class="entry">
             <div class="entry-head"><h3>Financial Administration Support</h3><span class="date">Jan 2026 – Mar 2026</span></div>
             <p class="sub">OBS · Milano Cortina 2026</p>
@@ -165,7 +176,7 @@
         </section>
 
         <section class="fade">
-          <h2>Projects</h2>
+          <h2>Projects <small>03</small></h2>
           <div class="entry">
             <div class="entry-head"><h3>Crack Propagation Prediction: Abaqus XFEM Simulation, Laboratory Experiments and Machine Learning <span class="badge">MSc thesis</span></h3><span class="date">Sep 2026 – Present</span></div>
             <ul>
